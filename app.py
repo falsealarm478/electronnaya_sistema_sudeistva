@@ -18,6 +18,7 @@ class Race(db.Model):
     date = db.Column(db.DateTime)
     organizer = db.Column(db.String(40))
     place = db.Column(db.String(160))
+    tracks = db.relationship('Tracks', backref='race', lazy=True)
 
     def __init__(self, name, date, organizer, place):
         self.name = name
@@ -37,6 +38,8 @@ class Tracks(db.Model):
     end_time = db.Column(db.DateTime)
     race_type = db.Column(db.String(40))
     telemetry = db.Column(db.String(100), nullable=True)
+    race_id = db.Column(db.Integer, db.ForeignKey('race.id'), nullable=False)
+
     def __init__(self, pilot1, pilot2, start_time, end_time, race_type):
         self.pilot1 = pilot1
         self.pilot2 = pilot2
