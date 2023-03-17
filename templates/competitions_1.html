@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Competitions {% endblock %}
+
+{% block content %}
+<h2>Races</h2>
+{% for race in races %}
+<p>Name {{ race.name }}</p>
+<p>Date {{ race.date }}</p>
+<p>Organizer {{ race.organizer }}</p>
+<p>Place {{ race.place }}</p>
+<ul>
+{% for track in race.tracks %}
+    <p>Pilot1 {{ track.pilot1 }}</p>
+    <p>Pilot2 {{ track.pilot2 }}</p>
+    <p>Start_time {{ track.start_time }}</p>
+    <p>End_time {{ track.end_time }}</p>
+    <p>Race_type {{ track.race_type }}</p>
+    <p><img src="{{ track.telemetry }}"></p>
+{% endfor %}
+</ul>
+{% endfor %}
+{% endblock %}
