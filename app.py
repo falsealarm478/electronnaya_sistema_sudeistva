@@ -30,6 +30,8 @@ class Race(db.Model):
     def __repr__(self):
         return '<Competition %r>' % self.competition_name
 
+    def __str__(self):
+        return f'{self.id}, {self.name}'
 class Tracks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     pilot1 = db.Column(db.Integer)

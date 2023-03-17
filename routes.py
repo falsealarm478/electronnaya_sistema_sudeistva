@@ -2,6 +2,9 @@ from app import app, Race, Tracks, db
 from flask import request, jsonify
 from datetime import datetime
 from generator import get_telemetry
+@app.route('/')
+def hello():
+    return 'hello'
 @app.route('/create', methods = ['POST'])
 def createRace():
     content = request.get_json()
@@ -33,4 +36,3 @@ def createTrack():
     db.session.commit()
     db.session.close()
     return '200'
-
